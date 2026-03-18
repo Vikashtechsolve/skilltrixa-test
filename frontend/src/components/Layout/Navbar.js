@@ -42,15 +42,31 @@ const Navbar = () => {
     }
   };
 
+  const showSkilltrixaLogo =
+    user?.role === 'vendor_admin' || user?.role === 'student';
+  const logoSrc = `${process.env.PUBLIC_URL || ''}/skilltrixa.svg`;
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to={getDashboardLink()} className="navbar-brand">
-          <span className="gradient-text">
-            {user?.role === 'vendor_admin' || user?.role === 'student'
-              ? 'Skilltrixa'
-              : 'Coding Platform'}
-          </span>
+        <Link
+          to={getDashboardLink()}
+          className={`navbar-brand${showSkilltrixaLogo ? ' navbar-brand--skilltrixa' : ''}`}
+        >
+          {showSkilltrixaLogo ? (
+            <span className="navbar-brand-logo-wrap">
+              <img
+                src={logoSrc}
+                alt="Skilltrixa"
+                className="navbar-brand-logo"
+                width={160}
+                height={62}
+                decoding="async"
+              />
+            </span>
+          ) : (
+            <span className="gradient-text">Coding Platform</span>
+          )}
         </Link>
 
         <div className="navbar-menu">
