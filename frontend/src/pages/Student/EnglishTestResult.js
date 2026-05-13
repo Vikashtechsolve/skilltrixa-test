@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axiosInstance from '../../utils/axios';
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer } from 'recharts';
 import './EnglishTestResult.css';
+import { getPublicBackendOrigin } from '../../config/api';
 
 const SECTION_META = {
   grammar: { icon: 'Aa', label: 'Grammar', color: '#6366f1' },
@@ -13,7 +14,7 @@ const SECTION_META = {
   listening: { icon: 'Li', label: 'Listening', color: '#ef4444' }
 };
 
-const API_BASE = (process.env.REACT_APP_API_URL || '').replace(/\/api\/?$/, '');
+const API_BASE = getPublicBackendOrigin();
 
 const resolveMediaUrl = (url) => {
   if (!url) return '';

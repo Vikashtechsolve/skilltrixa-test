@@ -7,8 +7,9 @@ import Modal from '../../components/Modal';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import './EnglishTestTaking.css';
+import { getPublicBackendOrigin } from '../../config/api';
 
-const API_BASE = (process.env.REACT_APP_API_URL || '').replace(/\/api\/?$/, '');
+const API_BASE = getPublicBackendOrigin();
 
 const resolveMediaUrl = (url) => {
   if (!url) return '';

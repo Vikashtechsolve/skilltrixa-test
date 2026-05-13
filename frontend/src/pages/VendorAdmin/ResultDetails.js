@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import axiosInstance from '../../utils/axios';
 import './VendorAdminCommon.css';
 import './ResultDetails.css';
+import { getPublicBackendOrigin } from '../../config/api';
 
 const ENGLISH_TYPES = ['english_grammar', 'english_vocabulary', 'english_reading', 'english_essay', 'english_speaking', 'english_listening'];
 const SUBJECTIVE_ENGLISH = ['english_grammar', 'english_reading', 'english_essay', 'english_speaking', 'english_listening'];
@@ -16,7 +17,7 @@ const SECTION_LABELS = {
   english_listening: 'Listening',
 };
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_BASE = getPublicBackendOrigin();
 
 /** Safely convert any value to a string for React rendering (avoids "Objects are not valid as a React child") */
 const safeText = (v) => {
